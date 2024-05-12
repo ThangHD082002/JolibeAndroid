@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ActivitySignIn">
+
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="2"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:background="@color/red_sign_in">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:src="@drawable/logojolibe"
+                android:layout_width="match_parent"
+                android:layout_height="150dp" />
+            <TextView
+                android:id="@+id/tvsign"
+                android:text="VUI LÒNG ĐĂNG NHẬP"
+                android:textSize="30dp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <EditText
+                android:id="@+id/etmail"
+                android:layout_width="match_parent"
+                android:background="@color/white"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="20dp"
+                android:drawableLeft="@drawable/baseline_alternate_email_24"
+                android:hint="Nhập email "
+                android:inputType="textEmailAddress"
+                android:textColor="@color/grey_text_edit"
+                android:textColorHint="@color/grey_text_edit"
+                />
+
+            <EditText
+                android:id="@+id/etpass"
+                android:layout_width="match_parent"
+                android:background="@color/white"
+                android:layout_marginLeft="15dp"
+                android:layout_height="45dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="15dp"
+                android:drawableLeft="@drawable/baseline_key_24"
+                android:hint="Mật khẩu"
+                android:inputType="numberPassword"
+                android:textColor="@color/grey_text_edit"
+                android:textColorHint="@color/grey_text_edit"
+                />
+
+
+
+
+
+
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/yellow_sign_in">
+
+            <Button
+                android:id="@+id/btn"
+                android:layout_width="300dp"
+                android:layout_height="55dp"
+                android:layout_marginTop="15dp"
+                android:layout_gravity="center"
+                android:background="@drawable/radius"
+                android:padding="6dp"
+                android:textSize="22dp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:text="Sign In"
+                android:textAllCaps="true"
+                />
+
+            <TextView
+                android:id="@+id/tvunreg"
+                android:text="Not Register ?"
+                android:gravity="center"
+                android:textSize="20dp"
+
+                android:textColor="@color/black"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tvsign1"
+                android:text="Register Here"
+                android:gravity="center"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
