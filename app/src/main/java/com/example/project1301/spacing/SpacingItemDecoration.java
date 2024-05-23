@@ -6,6 +6,12 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.graphics.Rect;
+import android.view.View;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
 public class SpacingItemDecoration extends RecyclerView.ItemDecoration {
     private int spacing;
 
@@ -21,12 +27,8 @@ public class SpacingItemDecoration extends RecyclerView.ItemDecoration {
         outRect.left = spacing;
         outRect.right = spacing;
         outRect.bottom = spacing;
+        outRect.top = spacing;
 
-        // Đặt margin top chỉ cho item đầu tiên để tránh khoảng trống kép giữa các item
-//        if (parent.getChildAdapterPosition(view) == 0) {
-//            outRect.top = spacing;
-//        } else {
-//            outRect.top = 0;
-//        }
+        // Kiểm tra xem item có phải là item đầu tiên không
     }
 }

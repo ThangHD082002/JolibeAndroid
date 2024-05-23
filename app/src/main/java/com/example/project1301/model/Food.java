@@ -1,10 +1,15 @@
 package com.example.project1301.model;
 
-public class Food {
+import java.io.Serializable;
+
+public class Food implements Serializable {
+
+    private String id;
     private int img;
     private String name, price, moTa, categoy;
 
-    public Food(int img, String name, String price, String moTa, String categoy) {
+    public Food(String id, int img, String name, String price, String moTa, String categoy) {
+        this.id = id;
         this.img = img;
         this.name = name;
         this.price = price;
@@ -12,11 +17,24 @@ public class Food {
         this.categoy = categoy;
     }
 
-    public Food(int img, String name, String price, String moTa) {
+    public Food(int img, String name, String price, String moTa, String category) {
         this.img = img;
         this.name = name;
         this.price = price;
         this.moTa = moTa;
+        this.categoy = category;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setCategoy(String categoy) {
+        this.categoy = categoy;
+    }
+
+    public String getId() {
+        return id;
     }
 
     public Food() {

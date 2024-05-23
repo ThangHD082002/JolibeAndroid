@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.project1301.model.UserData;
+import com.example.project1301.model.UserOrder;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -34,6 +35,8 @@ public class ActivitySignIn extends AppCompatActivity implements View.OnClickLis
     FirebaseDatabase firebaseDatabase;
 
     private UserData userData;
+
+    private UserOrder userOrder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,10 +70,12 @@ public class ActivitySignIn extends AppCompatActivity implements View.OnClickLis
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
                                 if (snapshot.exists()) {
 
-                                    userData = snapshot.getValue(UserData.class);
+//                                    userData = snapshot.getValue(UserData.class);
+                                    userOrder = snapshot.getValue(UserOrder.class);
                                     Toast.makeText(ActivitySignIn.this, "Login Success", Toast.LENGTH_SHORT).show();
                                     Intent intent1=new Intent(ActivitySignIn.this, MainActivity.class);
-                                    intent1.putExtra("item", userData);
+//                                    intent1.putExtra("item", userData);
+                                    intent1.putExtra("item", userOrder);
                                     startActivity(intent1);
                                 } else {
                                     // Xử lý trường hợp không tìm thấy dữ liệu của người dùng

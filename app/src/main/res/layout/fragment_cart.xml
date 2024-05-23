@@ -1,14 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
 
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <TextView
-        android:text="Home"
+        android:text="GIỎ HÀNG"
+        android:background="@color/yellow_sign_in"
         android:textSize="30dp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:layout_weight="0.1"
         android:gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:background="@drawable/grey_background"
+        android:id="@+id/recycleView"
+        android:layout_marginTop="20dp"
+        android:layout_weight="3.5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:outlineAmbientShadowColor="@color/orange"
+        android:orientation="vertical"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+            <TextView
+                android:id="@+id/totalTitle"
+                android:text="Tổng Cộng"
+                android:layout_weight="1"
+                android:textSize="25dp"
+                android:textColor="@color/black"
+                android:layout_marginLeft="10dp"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/totalPrice"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:text="0 đ"
+                android:textSize="25dp"
+                android:textColor="@color/red_sign_in"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="10dp"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:orientation="horizontal"
+            android:layout_marginTop="80dp"
+            android:weightSum="2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+
+
+            <Button
+                android:id="@+id/btnAddFood"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/radius_add_food"
+                android:text="THÊM MÓN"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="0dp" />
+
+            <Button
+                android:layout_width="180dp"
+                android:id="@+id/btnPayment"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="4dp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:text="THANH TOÁN NGAY"
+                android:background="@drawable/radius_detail"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

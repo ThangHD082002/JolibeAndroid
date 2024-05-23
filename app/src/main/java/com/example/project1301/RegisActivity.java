@@ -10,12 +10,23 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.project1301.model.Cart;
+import com.example.project1301.model.Food;
+import com.example.project1301.model.ItemCart;
+import com.example.project1301.model.ItemOrder;
+import com.example.project1301.model.Order;
+import com.example.project1301.model.Payment;
+import com.example.project1301.model.Shipment;
 import com.example.project1301.model.UserData;
+import com.example.project1301.model.UserOrder;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class RegisActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -23,6 +34,8 @@ public class RegisActivity extends AppCompatActivity implements View.OnClickList
     private Button btRegis;
 
     FirebaseAuth firebaseAuth;
+    private List<ItemOrder> listItemOrder;
+
     FirebaseDatabase firebaseDatabase;
 
     @Override
@@ -44,11 +57,26 @@ public class RegisActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View view) {
         if (view == btRegis) {
+
             String name = etName.getText().toString();
             String phone = etPhone.getText().toString();
             String mail = etMail.getText().toString();
             String pass = etPass.getText().toString();
             String addr = etAddr.getText().toString();
+
+
+            Food f = new Food("",R.drawable.menu_fresh, "" , "", "" ,"");
+            ItemCart ic = new ItemCart("", f,0);
+            Payment p = new Payment("", "");
+            List<ItemCart> lic = new ArrayList<>();
+            lic.add(ic);
+            Shipment shipment = new Shipment("","","","");
+            ItemOrder io = new ItemOrder("", lic, 0, p, "", "", shipment);
+            List<ItemOrder> lo = new ArrayList<>();
+            lo.add(io);
+            Order o = new Order(lo);
+
+
             boolean numeric = true;
             numeric = name.matches("-?\\d+(\\.\\d+)?");
             if (!numeric) {
@@ -57,7 +85,8 @@ public class RegisActivity extends AppCompatActivity implements View.OnClickList
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             Toast.makeText(RegisActivity.this, "Congratulations! You are Successfully Registered", Toast.LENGTH_SHORT).show();
-                            saveUser(name, phone, mail, pass, addr);
+
+                            saveUser(name, phone, mail, pass, addr, o);
                             Intent intent = new Intent(RegisActivity.this, ActivitySignIn.class);
                             startActivity(intent);
                         } else {
@@ -70,11 +99,10 @@ public class RegisActivity extends AppCompatActivity implements View.OnClickList
                 Toast.makeText(RegisActivity.this, "Username is Invalid", Toast.LENGTH_LONG).show();
         }
     }
-
-    private void saveUser(String name, String phone, String mail, String pass, String addr) {
+    private void saveUser(String name, String phone, String mail, String pass, String addr, Order o) {
         String uuid = firebaseAuth.getCurrentUser().getUid();
-        UserData data = new UserData(uuid, name, phone, mail, pass, addr);
-        firebaseDatabase.getReference().child("Registered User").child(uuid).setValue(data).addOnCompleteListener(new OnCompleteListener<Void>() {
+        UserOrder data1 = new UserOrder(uuid, name, phone, mail, pass, addr,  o);
+        firebaseDatabase.getReference().child("Registered User").child(uuid).setValue(data1).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {

@@ -6,19 +6,39 @@ import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.project1301.Adapter.FragmentMainAdapter;
+import com.example.project1301.model.Data;
 import com.example.project1301.model.Food;
 import com.example.project1301.model.UserData;
+import com.example.project1301.model.UserOrder;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
-public class MainActivity extends AppCompatActivity {
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.UUID;
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private TextView tName;
 
@@ -27,7 +47,11 @@ public class MainActivity extends AppCompatActivity {
     private ViewPager viewPager;
 
     private UserData userData;
-    FirebaseDatabase firebaseDatabase;
+
+    private UserOrder userOrder;
+
+    private String name="";
+
 
 
     @Override
@@ -35,17 +59,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        int combo = R.drawable.menu_combo;
-        Food f1 = new Food(combo, "Combo bán chạy", "109000", "Ngon Tuyệt");
-        firebaseDatabase.getReference().child("Food").push().setValue(f1);
+        FirebaseApp.initializeApp(this);
+        pushFood();
         tName = findViewById(R.id.tname);
         navigationView = findViewById(R.id.navigation);
         viewPager = findViewById(R.id.viewPager);
         Intent intent = getIntent();
-        userData = (UserData) intent.getSerializableExtra("item");
-        if(userData != null){
-            String name = userData.getName();
+        userOrder = (UserOrder) intent.getSerializableExtra("item");
+        if(userOrder != null){
+            name = userOrder.getName();
             tName.setText(name);
         }
         FragmentMainAdapter adapter = new FragmentMainAdapter(getSupportFragmentManager(), FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
@@ -100,5 +122,20 @@ public class MainActivity extends AppCompatActivity {
                 return  true;
             }
         });
+        tName.setOnClickListener(this);
+    }
+
+    private void pushFood() {
+
+    }
+
+
+    @Override
+    public void onClick(View v) {
+        if(v == tName){
+            Intent intent2 = new Intent(this, AccountActivity.class);
+            intent2.putExtra("item", name);
+            startActivity(intent2);
+        }
     }
 }

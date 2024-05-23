@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/img"
+            android:src="@drawable/menu_drink"
+            android:layout_width="match_parent"
+            android:layout_height="400dp" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+            <TextView
+                android:id="@+id/tname"
+                android:layout_weight="1"
+                android:text="2 miếng gà sốt cay"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                android:layout_marginLeft="10dp"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tprice"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:text="70000 đ"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="@color/red_sign_in"
+                android:layout_marginRight="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_marginTop="40dp"
+            android:layout_width="150dp"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:background="@drawable/grey_background"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/giam"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_margin="8dp"
+                android:background="@drawable/radius_detail"
+                android:gravity="center"
+                android:text="-"
+                android:textSize="21sp"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/showSl"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="8dp"
+
+                android:layout_marginEnd="8dp"
+                android:gravity="center"
+                android:text="1"
+                android:textColor="@color/black"
+                android:textSize="21sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tangSl"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_margin="4dp"
+                android:textSize="21sp"
+                android:background="@drawable/radius_detail"
+                android:gravity="center"
+                android:text="+"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:outlineAmbientShadowColor="@color/orange"
+        android:orientation="vertical"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+            <TextView
+                android:id="@+id/totalTitle"
+                android:text="Tổng Cộng"
+                android:layout_weight="1"
+                android:textSize="25dp"
+                android:textColor="@color/black"
+                android:layout_marginLeft="10dp"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/toalPrice"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:text="100000 đ"
+                android:textSize="25dp"
+                android:textColor="@color/red_sign_in"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="10dp"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:orientation="horizontal"
+            android:layout_marginTop="80dp"
+            android:weightSum="2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <Button
+                android:layout_width="180dp"
+                android:id="@+id/btnAddcart"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="THÊM VÀO GIỎ"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:background="@drawable/radius_add_cart"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:layout_width="180dp"
+                android:id="@+id/btnPayment"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="4dp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:text="THANH TOÁN NGAY"
+                android:background="@drawable/radius_detail"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>

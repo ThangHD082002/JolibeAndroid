@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".MapActivity">
+
+    <TextView
+        android:id="@+id/title"
+        android:text="ĐỊA CHỈ"
+        android:gravity="center"
+        android:textSize="30dp"
+        android:background="@color/yellow_sign_in"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:layout_marginTop="10dp"
+                android:id="@+id/etName"
+                android:layout_marginLeft="10dp"
+                android:hint="Nhập tên"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <EditText
+                android:layout_marginTop="10dp"
+                android:id="@+id/etSdt"
+                android:hint="Nhập số điện thoại"
+                android:layout_marginLeft="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <SearchView
+
+                android:id="@+id/search_view"
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_height="50dp"
+                android:queryHint="Nhập địa điểm" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/search_view"
+                android:layout_marginBottom="20dp"
+                android:visibility="gone" />
+
+
+            <fragment
+                android:id="@+id/id_map"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:layout_width="match_parent"
+                android:layout_height="300dp" />
+
+            <Button
+                android:id="@+id/btSubmit"
+                android:layout_marginTop="10dp"
+                android:background="@color/red_sign_in"
+                android:text="Hoàn thành"
+                android:textColor="@color/white"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

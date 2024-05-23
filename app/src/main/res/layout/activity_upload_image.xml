@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".UploadImage">
+
+    <TextView
+        android:id="@+id/tx1"
+        android:text="FIREBASE STORAGE"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_height="wrap_content" />
+    
+    
+    <ImageView
+        android:id="@+id/img"
+        android:src="@drawable/menu_chicken"
+        android:layout_width="match_parent"
+        android:layout_height="300dp" />
+
+
+
+    <Button
+        android:id="@+id/btSelect"
+        android:text="select image"
+        android:background="@color/yellow_sign_in"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btUp"
+        android:text="select image"
+        android:background="@color/red_sign_in"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+</LinearLayout>

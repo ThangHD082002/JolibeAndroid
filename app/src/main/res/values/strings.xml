@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">project130.1</string>
+    <string-array name="payment">
+        <item>Tien Mat</item>
+        <item>Shpopee Pay</item>
+        <item>MoMo</item>
+    </string-array>
 </resources>

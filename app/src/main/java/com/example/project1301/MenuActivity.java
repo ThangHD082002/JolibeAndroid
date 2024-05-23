@@ -57,6 +57,7 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
         recyclerView.addItemDecoration(itemDecoration);
         recyclerView.setAdapter(adapter);
         close.setOnClickListener(this);
+        adapter.setItemListener(this);
 
 
 
@@ -74,11 +75,10 @@ public class MenuActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onItemClick(View view, int position) {
         Category it = adapter.getItem(position);
-        if(position == 0){
-            String name = it.getName();
-            Intent intent = new Intent(this, DetailMenuActivity.class);
-            intent.putExtra("item", name);
-            startActivity(intent);
-        }
+        String name = it.getName();
+        Intent intent = new Intent(this, DetailMenuActivity.class);
+        intent.putExtra("item", name);
+        startActivity(intent);
+
     }
 }

@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.project1301.R;
+import com.example.project1301.model.Category;
 import com.example.project1301.model.Food;
 
 import java.util.List;
@@ -20,6 +21,16 @@ public class RecycleViewDetailMenuAdapter extends RecyclerView.Adapter<RecycleVi
 
     private Context context;
     List<Food> list;
+
+    private ItemListener itemListener;
+
+    public void setItemListener(ItemListener itemListener) {
+        this.itemListener = itemListener;
+    }
+
+    public Food getItem(int position){
+        return list.get(position);
+    }
 
 
     public RecycleViewDetailMenuAdapter(Context context, List<Food> list) {
@@ -40,9 +51,9 @@ public class RecycleViewDetailMenuAdapter extends RecyclerView.Adapter<RecycleVi
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Food item = list.get(position);
         holder.img.setImageResource(item.getImg());
-        holder.name.setText(item.getName());
-        holder.price.setText(item.getPrice());
-        holder.moTa.setText(item.getMoTa());
+        holder.name.setText(item.getName()+"");
+        holder.price.setText(item.getPrice()+"");
+        holder.moTa.setText(item.getMoTa()+"");
     }
 
     @Override
@@ -50,7 +61,7 @@ public class RecycleViewDetailMenuAdapter extends RecyclerView.Adapter<RecycleVi
         return list.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         private ImageView img;
         private TextView name, price, moTa;
@@ -64,9 +75,20 @@ public class RecycleViewDetailMenuAdapter extends RecyclerView.Adapter<RecycleVi
             price = view.findViewById(R.id.item_price);
             moTa = view.findViewById(R.id.item_desc);
             btPay = view.findViewById(R.id.item_btPay);
+            view.setOnClickListener(this);
 
 
         }
+
+        @Override
+        public void onClick(View view) {
+            if(itemListener != null){
+                itemListener.onItemClick(view, getAdapterPosition());
+            }
+        }
+    }
+    public interface  ItemListener{
+        void onItemClick(View view, int position);
     }
 
 }
